@@ -45,10 +45,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # [ruby] Skip installing gem documentation
 RUN echo 'install: --no-document\nupdate: --no-document' >> "$HOME/.gemrc"
 
-ENV RUBY_MAJOR 2.2
-ENV RUBY_VERSION 2.2.3
-ENV RUBY_DOWNLOAD_SHA256 df795f2f99860745a416092a4004b016ccf77e8b82dec956b120f18bdc71edce
-ENV RUBYGEMS_VERSION 2.5.0
+ENV RUBY_MAJOR 2.3
+ENV RUBY_VERSION 2.3.0
+ENV RUBY_DOWNLOAD_SHA256 ba5ba60e5f1aa21b4ef8e9bf35b9ddb57286cb546aac4b5a28c71f459467e507
+ENV RUBYGEMS_VERSION 2.5.1
 
 # [ruby] Some of ruby's build scripts are written in ruby
 #        We purge this later to make sure our final image uses what we just
@@ -72,7 +72,7 @@ ENV GEM_HOME /usr/local/bundle
 ENV PATH $GEM_HOME/bin:$PATH
 
 # [ruby] Install bundler.
-ENV BUNDLER_VERSION 1.10.6
+ENV BUNDLER_VERSION 1.11.2
 RUN gem install bundler --version "$BUNDLER_VERSION" \
   && bundle config --global path "$GEM_HOME" \
   && bundle config --global bin "$GEM_HOME/bin"
